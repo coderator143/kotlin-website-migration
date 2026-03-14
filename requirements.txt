@@ -1,4 +1,6 @@
-flask==1.0
-frozen-flask==0.12
-beautifulsoup4==4.5.1
+Flask==2.0.2
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+frozen-flask==0.15
+beautifulsoup4==4.9.3
 PyYAML==5.4.1

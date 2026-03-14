@@ -12,7 +12,9 @@
 {% block body_class %}page__index-new{% endblock %}
 
 {% block page_outer_content %}
-    <div id="react-app"></div>
+    <div id="react-app">
+        {{ ssr_html | safe }}
+    </div>
 {% endblock %}
 
 {% block styles %}

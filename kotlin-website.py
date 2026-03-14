@@ -4,6 +4,7 @@ import glob
 import os
 import sys
 import threading
+import subprocess
 from os import path
 from urllib.parse import urlparse, ParseResult
 
@@ -46,6 +47,14 @@ def get_asset_version(filename):
             _cached_asset_version[filename] = digest
             return digest
     return None
+
+def render_react(url):
+    result = subprocess.run(
+        ["node", "frontend/render.js", url],
+        capture_output=True,
+        text=True
+    )
+    return result.stdout
 
 def get_site_data():
     data = {}
@@ -144,11 +153,13 @@ def autoversion_filter(filename):
     return ParseResult(**original).geturl()
 
 
-@app.route('/')
-def index_page():
-    return render_template('pages/index.html',
-                           is_index_page=True,
-                           )
+@app.route("/")
+def index():
+    ssr_html = render_react("/")
+    return render_template(
+        "pages/index.html",
+        ssr_html=ssr_html
+    )
 
 
 @app.route('/assets/<path:path>')
