@@ -7,7 +7,7 @@
     "defaults, not ie > 0, edge > 18"
   ],
   "dependencies": {
-    "@babel/core": "7.15.8",
+    "@babel/core": "^7.29.0",
     "@babel/register": "7.15.3",
     "@jetbrains/babel-preset-jetbrains": "^2.3.1",
     "@jetbrains/kotlin-web-site-ui": "3.1.0",
@@ -24,7 +24,7 @@
     "@rollup/plugin-buble": "0.21.3",
     "aos": "2.1.1",
     "autoprefixer": "10.3.2",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^10.1.1",
     "babel-plugin-transform-import-ignore": "1.1.0",
     "codemirror": "5.61.0",
     "core-js": "3.19.0",
@@ -72,6 +72,8 @@
     "whatwg-fetch": "2.0.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
     "glob": "7.1.1",
     "minimist": "1.2.6",
     "webpack-dev-server": "^5.2.3"

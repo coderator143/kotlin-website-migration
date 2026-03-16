@@ -1,13 +1,24 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
 
-export function render(url) {
+import {
+  createStaticHandler,
+  createStaticRouter,
+  StaticRouterProvider
+} from "react-router";
+
+import { routes } from "./router";
+
+export async function render(url) {
+  const handler = createStaticHandler(routes);
+
+  const context = await handler.query(
+    new Request("http://localhost" + url)
+  );
+
+  const router = createStaticRouter(routes, context);
+
   return renderToString(
-    <StaticRouter location={url}>
-      <RouterProvider router={router} />
-    </StaticRouter>
+    <StaticRouterProvider router={router} context={context} />
   );
 }

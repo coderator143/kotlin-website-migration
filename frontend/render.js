@@ -1,7 +1,7 @@
-import { render } from "./entry.server.js";
+const { render } = require("./dist/server.js");
 
 const url = process.argv[2] || "/";
 
-const html = render(url);
-
-console.log(html);
+render(url).then((html) => {
+  console.log(html);
+});
