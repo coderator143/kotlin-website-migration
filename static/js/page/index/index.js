@@ -19,7 +19,7 @@ import '../index/index.scss';
 import '../../../css/grid.scss'
 
 function OverviewPageContent() {
-    return <div className="overview-page">
+    return <div className="overview-page" suppressHydrationWarning={true}>
         <HeaderSection/>
         <LatestFromKotlinSection/>
         <WhyKotlinSection/>
@@ -29,9 +29,9 @@ function OverviewPageContent() {
 }
 
 export const OverviewPage = () => (
-    <ThemeProvider theme="dark">
+    // <ThemeProvider theme="dark">
         <OverviewPageContent/>
-    </ThemeProvider>
+    // </ThemeProvider>
 )
 
 const container = document.getElementById('react-app')

@@ -5,9 +5,9 @@ import { ThemeProvider } from '@rescui/ui-contexts';
 
 const Footer = (props) => {
   return (
-    <ThemeProvider theme="dark">
+    // <ThemeProvider theme="dark">
       <GlobalFooter { ... props } />
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
 

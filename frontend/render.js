@@ -4,11 +4,9 @@ const url = process.argv[2] || "/";
 
 render(url)
   .then((html) => {
-    if (!html) {
-      console.error("SSR Error: Render returned empty string");
-      process.exit(1);
-    }
-    process.stdout.write(html.trim());
+    // Trimming removes \n or spaces that cause "Text Node" mismatches
+    const cleanHtml = html.replace(/>\s+</g, '><').trim(); 
+    process.stdout.write(cleanHtml);
   })
   .catch((err) => {
     console.error("SSR Fatal Error:", err);

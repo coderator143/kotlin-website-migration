@@ -29,22 +29,17 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.(scss|css|sass)$/,
+        loader: "null-loader",
+      },
+      // ALSO ADD THIS FOR IMAGES/FONTS to prevent similar errors:
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: "null-loader",
+      }
     ]
   },
-
-  plugins: [
-    // FIX: This prevents Webpack from crashing when it hits .scss/.css imports.
-    // It replaces those imports with an empty object during the build.
-    new webpack.NormalModuleReplacementPlugin(
-      /\.(css|scss|sass|less)$/,
-      path.resolve(__dirname, "frontend/empty-module.js")
-    ),
-    // Doing the same for images/static assets if they cause "Parse failed" errors
-    new webpack.NormalModuleReplacementPlugin(
-      /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-      path.resolve(__dirname, "frontend/empty-module.js")
-    )
-  ],
 
   resolve: {
     extensions: [".js", ".jsx", ".json"]
