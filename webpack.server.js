@@ -7,7 +7,6 @@ module.exports = {
 
   mode: "development",
 
-  // Point this to your React SSR entry point
   entry: "./frontend/entry.server.jsx",
 
   output: {
@@ -30,8 +29,6 @@ module.exports = {
           }
         }
       },
-      // Fallback: If you prefer not to use the Plugin below, 
-      // you can use asset/resource or null-loader here.
     ]
   },
 
@@ -42,7 +39,7 @@ module.exports = {
       /\.(css|scss|sass|less)$/,
       path.resolve(__dirname, "frontend/empty-module.js")
     ),
-    // Do the same for images/static assets if they cause "Parse failed" errors
+    // Doing the same for images/static assets if they cause "Parse failed" errors
     new webpack.NormalModuleReplacementPlugin(
       /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
       path.resolve(__dirname, "frontend/empty-module.js")
