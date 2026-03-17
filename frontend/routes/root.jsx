@@ -1,10 +1,12 @@
 import React from "react";
+// frontend/routes/root.jsx
+import { ThemeProvider } from '@rescui/ui-contexts';
 import { Outlet } from "react-router-dom";
 
 export default function Root() {
   return (
-    <div>
+    <ThemeProvider theme="dark">
       <Outlet />
-    </div>
+    </ThemeProvider>
   );
 }

@@ -9,16 +9,21 @@ RUN apt-get update && \
     apt-get install -y nodejs && \
     corepack enable
 
-# Install Python dependencies
+# Copy ONLY dependency files first (for caching)
+COPY package.json yarn.lock* ./
+
+# Use stable registry
+RUN yarn config set registry https://registry.npmjs.org/
+
+# Install dependencies ONCE
+RUN yarn install --network-timeout 600000
+
+# Install Python dependencies (you missed this earlier!)
 COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
 
-# Copy all code
+# Now copy the rest of the app
 COPY . .
-
-# Install Node dependencies
-COPY package.json yarn.lock* ./
-RUN yarn install
 
 EXPOSE 8080
 ENTRYPOINT ["python3", "/app/kotlin-website.py"]

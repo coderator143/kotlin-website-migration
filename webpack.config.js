@@ -20,8 +20,8 @@ module.exports = (params = {}) => {
   return {
     mode: env,
     entry: {
+      client: "./frontend/entry.client.jsx",
       common: "./static/js/page/common.js",
-      index: "./static/js/page/index/index.js",
       "styles-v2": "./static/css/styles-v2.scss",
     },
 
@@ -48,14 +48,13 @@ module.exports = (params = {}) => {
         // JS & JSX
         {
           test: /\.(js|jsx)$/,
-          include: [path.resolve(__dirname, "static/js")],
+          include: [
+            path.resolve(__dirname, "static/js"),
+            path.resolve(__dirname, "frontend"),
+          ],
           exclude: /node_modules/,
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              ["@babel/preset-react", { runtime: "automatic" }],
-            ],
+          use: {
+            loader: "babel-loader",
           },
         },
 
@@ -113,7 +112,10 @@ module.exports = (params = {}) => {
               loader: "svgo-loader",
               options: {
                 plugins: [
-                  { name: "preset-default", params: { overrides: { convertPathData: false } } },
+                  {
+                    name: "preset-default",
+                    params: { overrides: { convertPathData: false } },
+                  },
                   "removeScriptElement",
                 ],
               },

@@ -2,9 +2,13 @@ import React from "react";
 import { hydrateRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
-import { router } from "./router.client";
+// Point this to the CLIENT router file specifically
+import { router } from "./router.client.jsx"; 
 
-hydrateRoot(
-  document.getElementById("react-app"),
-  <RouterProvider router={router} />
-);
+const container = document.getElementById("react-app");
+
+if (container) {
+    hydrateRoot(container, <RouterProvider router={router} />);
+} else {
+    console.error("Could not find element #react-app");
+}

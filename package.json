@@ -6,8 +6,10 @@
   "browserslist": [
     "defaults, not ie > 0, edge > 18"
   ],
+  "installConfig": {
+    "ignorePeerDependencies": true
+  },
   "dependencies": {
-    "@babel/core": "^7.29.0",
     "@babel/register": "7.15.3",
     "@jetbrains/babel-preset-jetbrains": "^2.3.1",
     "@jetbrains/kotlin-web-site-ui": "3.1.0",
@@ -24,7 +26,6 @@
     "@rollup/plugin-buble": "0.21.3",
     "aos": "2.1.1",
     "autoprefixer": "10.3.2",
-    "babel-loader": "^10.1.1",
     "babel-plugin-transform-import-ignore": "1.1.0",
     "codemirror": "5.61.0",
     "core-js": "3.19.0",
@@ -72,17 +73,20 @@
     "whatwg-fetch": "2.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
     "@babel/preset-react": "^7.28.5",
+    "babel-loader": "^10.1.1",
     "glob": "7.1.1",
     "minimist": "1.2.6",
+    "null-loader": "^4.0.1",
     "webpack-dev-server": "^5.2.3"
   },
   "scripts": {
     "build": "webpack",
-    "build:production": "NODE_ENV=production webpack  --mode production",
+    "build:production": "NODE_ENV=production webpack --mode production",
     "postinstall": "cd node_modules/codemirror && rollup -c",
     "start": "webpack serve --config webpack.config.js --mode development"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22"
 }

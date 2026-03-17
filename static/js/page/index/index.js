@@ -36,4 +36,4 @@ export const OverviewPage = () => (
 
 const container = document.getElementById('react-app')
 
-ReactDOM.render(<OverviewPage/>, container);
+// ReactDOM.render(<OverviewPage/>, container);
